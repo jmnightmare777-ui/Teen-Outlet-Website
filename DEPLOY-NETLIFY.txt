@@ -1,0 +1,6 @@
+NETLIFY DEPLOYMENT
+1. Extract this ZIP.
+2. Drag the CONTENTS of this folder (or this folder itself) into Netlify Drop.
+3. index.html must be at the site root.
+
+All site pages, images, CSS, and JavaScript are included locally in this package.
