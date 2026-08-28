@@ -1,0 +1,4 @@
+/assets/teen-outlet-logo.jpeg /to-logo.jpeg 200
+/assets/teen-outlet-brand-banner.jpeg /teen-outlet-banner.jpeg 200
+/assets/cash-app-qr.jpeg /cashapp-qr.jpeg 200
+/assets/* /:splat 200
