@@ -32,6 +32,19 @@
         else nav.appendChild(testimonyLink);
       }
     }
+    if (!nav.querySelector('a[href*="pastors"]')) {
+      const pastorsLink = document.createElement('a');
+      pastorsLink.href = '/pastors/';
+      pastorsLink.textContent = 'Pastors';
+      if (window.location.pathname.startsWith('/pastors')) pastorsLink.classList.add('active');
+      const newHereLink = Array.from(nav.querySelectorAll('a')).find(link => link.textContent.trim() === 'New Here');
+      if (newHereLink) nav.insertBefore(pastorsLink, newHereLink);
+      else {
+        const navButton = nav.querySelector('.nav-button');
+        if (navButton) nav.insertBefore(pastorsLink, navButton);
+        else nav.appendChild(pastorsLink);
+      }
+    }
   }
 
   // Use the approved logo artwork uploaded to the repository.
