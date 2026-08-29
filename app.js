@@ -34,6 +34,44 @@
     }
   }
 
+  // Use the approved logo artwork uploaded to the repository.
+  if (document.body.classList.contains('page-home')) {
+    const homePoster = document.querySelector('.hero-poster');
+    if (homePoster) {
+      homePoster.src = '/TO%20Homepage%20Logo.png?v=20260829';
+      homePoster.alt = 'Teen Outlet — A place to belong, a purpose to live, a future to build';
+      homePoster.style.objectFit = 'contain';
+    }
+
+    const launchpadMark = document.querySelector('.launchpad-mark');
+    if (launchpadMark) {
+      launchpadMark.innerHTML = '<img src="/TO%20Launchpad.png?v=20260829" alt="TO Launchpad">';
+      const image = launchpadMark.querySelector('img');
+      image.style.width = '100%';
+      image.style.maxWidth = '430px';
+      image.style.height = 'auto';
+      image.style.objectFit = 'contain';
+      image.style.display = 'block';
+      image.style.margin = '0 auto';
+    }
+  }
+
+  if (document.body.classList.contains('page-launchpad')) {
+    const heroInner = document.querySelector('.page-hero-launchpad .page-hero-inner');
+    if (heroInner && !heroInner.querySelector('.launchpad-brand-art')) {
+      const image = document.createElement('img');
+      image.className = 'launchpad-brand-art';
+      image.src = '/TO%20Launchpad.png?v=20260829';
+      image.alt = 'TO Launchpad';
+      image.style.display = 'block';
+      image.style.width = 'min(620px, 92vw)';
+      image.style.height = 'auto';
+      image.style.objectFit = 'contain';
+      image.style.margin = '0 auto 28px';
+      heroInner.prepend(image);
+    }
+  }
+
   toggle?.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!open));
