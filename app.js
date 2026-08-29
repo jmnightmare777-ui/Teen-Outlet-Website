@@ -14,6 +14,26 @@
 
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.site-nav');
+
+  if (nav) {
+    nav.querySelectorAll('a').forEach(link => {
+      if (link.textContent.trim() === 'LiT') link.childNodes[0].textContent = 'LIT';
+    });
+    if (!nav.querySelector('a[href*="testimonies"]')) {
+      const testimonyLink = document.createElement('a');
+      testimonyLink.href = '/testimonies/';
+      testimonyLink.textContent = 'Testimonies';
+      if (window.location.pathname.startsWith('/testimonies')) testimonyLink.classList.add('active');
+      const newHereLink = Array.from(nav.querySelectorAll('a')).find(link => link.textContent.trim() === 'New Here');
+      if (newHereLink) nav.insertBefore(testimonyLink, newHereLink);
+      else {
+        const navButton = nav.querySelector('.nav-button');
+        if (navButton) nav.insertBefore(testimonyLink, navButton);
+        else nav.appendChild(testimonyLink);
+      }
+    }
+  }
+
   toggle?.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!open));
