@@ -19,7 +19,11 @@
     nav.querySelectorAll('a').forEach(link => {
       if (link.textContent.trim() === 'LiT') link.childNodes[0].textContent = 'LIT';
     });
-    if (!nav.querySelector('a[href*="testimonies"]')) {
+    const hasTestimoniesLink = Array.from(nav.querySelectorAll('a')).some(link => {
+      const label = link.textContent.trim().toLowerCase();
+      return label === 'testimonies' || link.getAttribute('href')?.includes('testimonies');
+    });
+    if (!hasTestimoniesLink) {
       const testimonyLink = document.createElement('a');
       testimonyLink.href = '/testimonies/';
       testimonyLink.textContent = 'Testimonies';
@@ -32,7 +36,11 @@
         else nav.appendChild(testimonyLink);
       }
     }
-    if (!nav.querySelector('a[href*="pastors"]')) {
+    const hasPastorsLink = Array.from(nav.querySelectorAll('a')).some(link => {
+      const label = link.textContent.trim().toLowerCase();
+      return label === 'pastors' || link.getAttribute('href')?.includes('pastors');
+    });
+    if (!hasPastorsLink) {
       const pastorsLink = document.createElement('a');
       pastorsLink.href = '/pastors/';
       pastorsLink.textContent = 'Pastors';
