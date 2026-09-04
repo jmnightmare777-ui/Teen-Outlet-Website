@@ -17,6 +17,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .events-section-heading{margin-bottom:28px}.events-section-heading h2{margin-bottom:8px}.events-section-heading p{max-width:720px;color:#bdcbd4}.past-events-section{border-top:1px solid rgba(25,200,255,.14);background:linear-gradient(180deg,rgba(25,200,255,.025),transparent 28%)}.past-events-list .event-detail{opacity:.82}.past-events-list .event-detail-media img{filter:saturate(.72) brightness(.82)}.past-event-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:12px;padding:6px 10px;border:1px solid rgba(25,200,255,.28);border-radius:999px;color:#9fb4c1;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.events-empty{display:none;padding:30px;border:1px solid rgba(25,200,255,.18);background:#040b11;color:#bdcbd4}.events-empty.is-visible{display:block}.past-events-section[hidden]{display:none!important}
+  </style>
   <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body class="page-events">
@@ -30,14 +33,60 @@
 </header>
 <main id="main-content">
   <section class="page-hero page-hero-events"><div class="page-hero-grid" aria-hidden="true"></div><div class="container page-hero-inner reveal"><p class="kicker">WHAT’S HAPPENING</p><h1>MAKE ROOM<br>FOR <em>MORE.</em></h1><p>Big nights. Real friendships. Jesus at the center.</p></div></section>
-  <section class="section event-list-section"><div class="container event-list">
-    <article class="event-detail reveal" id="heart-of-worship"><div class="event-detail-media"><img src="assets/event-heart-of-worship.jpg" alt="The Heart of Worship worship service poster"></div><div class="event-detail-copy"><p class="kicker">SUNDAY · AUGUST 30, 2026</p><h2>The Heart of Worship</h2><p class="lead">A focused night of worship, prayer, and seeking God together.</p><dl class="event-facts"><div><dt>Time</dt><dd>5:00 PM–8:00 PM</dd></div><div><dt>Location</dt><dd>2170 Buck Creek Road<br>Festus, MO 63028</dd></div><div><dt>Type</dt><dd>Worship service</dd></div></dl><div class="inline-actions"><a class="button button-primary" href="heart-of-worship.ics" download>Add to calendar</a><a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">Get directions</a></div></div></article>
-    <article class="event-detail event-detail-reverse reveal" id="guest-speaker-night"><div class="event-detail-media"><img src="assets/event-guest-speaker.jpg" alt="You Belong Here guest speaker event poster"></div><div class="event-detail-copy"><p class="kicker">WEDNESDAY · SEPTEMBER 2, 2026</p><h2>You Belong Here</h2><p class="lead">A powerful Wednesday night with a special guest speaker.</p><dl class="event-facts"><div><dt>Doors</dt><dd>6:30 PM</dd></div><div><dt>Service</dt><dd>7:00 PM</dd></div><div><dt>Location</dt><dd>2170 Buck Creek Road<br>Festus, MO 63028</dd></div></dl><div class="inline-actions"><a class="button button-primary" href="guest-speaker-night.ics" download>Add to calendar</a><a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">Get directions</a></div></div></article>
-    <article class="event-detail reveal" id="costume-party"><div class="event-detail-media"><img src="assets/event-costume-party.jpg" alt="Teen Outlet Costume Party poster"></div><div class="event-detail-copy"><p class="kicker">SATURDAY · OCTOBER 17, 2026</p><h2>Costume Party</h2><p class="lead">A night of fun, friends, games, prizes, a DJ, food, drinks, and good vibes.</p><dl class="event-facts"><div><dt>Time</dt><dd>6:00 PM–9:30 PM</dd></div><div><dt>Ages</dt><dd>13 and up</dd></div><div><dt>Admission</dt><dd>$20 online · $25 at the door</dd></div><div><dt>Location</dt><dd>320 N. Adams Street<br>Festus, MO 63028</dd></div></dl><div class="inline-actions"><a class="button button-primary" href="https://www.zeffy.com/en-US/ticketing/teen-outlet-costume-party" target="_blank" rel="noopener">Buy Costume Party Tickets <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="costume-party.ics" download>Add to calendar</a></div></div></article>
+
+  <section class="section event-list-section" aria-labelledby="upcoming-events-heading"><div class="container">
+    <div class="section-heading events-section-heading reveal"><p class="kicker">UPCOMING</p><h2 id="upcoming-events-heading">Upcoming Events</h2><p>See what’s coming up at Teen Outlet and make plans to join us.</p></div>
+    <div class="event-list" id="upcoming-events-list">
+      <article class="event-detail reveal" id="heart-of-worship" data-event-end="2026-08-30"><div class="event-detail-media"><img src="assets/event-heart-of-worship.jpg" alt="The Heart of Worship worship service poster"></div><div class="event-detail-copy"><p class="kicker">SUNDAY · AUGUST 30, 2026</p><h2>The Heart of Worship</h2><p class="lead">A focused night of worship, prayer, and seeking God together.</p><dl class="event-facts"><div><dt>Time</dt><dd>5:00 PM–8:00 PM</dd></div><div><dt>Location</dt><dd>2170 Buck Creek Road<br>Festus, MO 63028</dd></div><div><dt>Type</dt><dd>Worship service</dd></div></dl><div class="inline-actions"><a class="button button-primary" href="heart-of-worship.ics" download>Add to calendar</a><a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">Get directions</a></div></div></article>
+      <article class="event-detail event-detail-reverse reveal" id="guest-speaker-night" data-event-end="2026-09-02"><div class="event-detail-media"><img src="assets/event-guest-speaker.jpg" alt="You Belong Here guest speaker event poster"></div><div class="event-detail-copy"><p class="kicker">WEDNESDAY · SEPTEMBER 2, 2026</p><h2>You Belong Here</h2><p class="lead">A powerful Wednesday night with a special guest speaker.</p><dl class="event-facts"><div><dt>Doors</dt><dd>6:30 PM</dd></div><div><dt>Service</dt><dd>7:00 PM</dd></div><div><dt>Location</dt><dd>2170 Buck Creek Road<br>Festus, MO 63028</dd></div></dl><div class="inline-actions"><a class="button button-primary" href="guest-speaker-night.ics" download>Add to calendar</a><a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">Get directions</a></div></div></article>
+      <article class="event-detail reveal" id="costume-party" data-event-end="2026-10-17"><div class="event-detail-media"><img src="assets/event-costume-party.jpg" alt="Teen Outlet Costume Party poster"></div><div class="event-detail-copy"><p class="kicker">SATURDAY · OCTOBER 17, 2026</p><h2>Costume Party</h2><p class="lead">A night of fun, friends, games, prizes, a DJ, food, drinks, and good vibes.</p><dl class="event-facts"><div><dt>Time</dt><dd>6:00 PM–9:30 PM</dd></div><div><dt>Ages</dt><dd>13 and up</dd></div><div><dt>Admission</dt><dd>$20 online · $25 at the door</dd></div><div><dt>Location</dt><dd>320 N. Adams Street<br>Festus, MO 63028</dd></div></dl><div class="inline-actions"><a class="button button-primary" href="https://www.zeffy.com/en-US/ticketing/teen-outlet-costume-party" target="_blank" rel="noopener">Buy Costume Party Tickets <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="costume-party.ics" download>Add to calendar</a></div></div></article>
+    </div>
+    <p class="events-empty" id="upcoming-events-empty">No special events are scheduled right now. Check back soon, and join us every Wednesday at 6:30 PM.</p>
   </div></section>
+
+  <section class="section past-events-section" id="past-events-section" aria-labelledby="past-events-heading" hidden><div class="container">
+    <div class="section-heading events-section-heading reveal"><p class="kicker">LOOKING BACK</p><h2 id="past-events-heading">Past Events</h2><p>Previous Teen Outlet gatherings, special nights, and moments we’ve shared together.</p></div>
+    <div class="event-list past-events-list" id="past-events-list"></div>
+  </div></section>
+
   <section class="section weekly-section"><div class="container weekly-card reveal"><div class="weekly-time"><strong>6:30</strong><span>PM</span></div><div><p class="kicker">EVERY WEDNESDAY</p><h2>Teen Outlet Youth Night</h2><p>Every student. Every story matters. Join us for community, worship, teaching, prayer, and a place to be known.</p></div><div class="weekly-actions"><a class="button button-primary" href="new-here.html">Plan your visit</a><a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">Directions</a></div></div></section>
   <section class="section social-reminder-section"><div class="container social-reminder reveal"><p>Event information can change. Follow Teen Outlet on Facebook for the latest updates.</p><a class="button button-secondary" href="https://www.facebook.com/profile.php?id=61590344560767" target="_blank" rel="noopener">Follow on Facebook <span>↗</span></a></div></section>
 </main>
 <footer class="site-footer"><div class="footer-grid"><div class="footer-brand"><img src="assets/teen-outlet-logo.jpeg" alt="Teen Outlet TO logo"><div><strong>Teen Outlet Ministries</strong><span>A place to belong. A purpose to live. A future to build.</span></div></div><div class="footer-column"><h2>Gather</h2><p>Wednesdays at 6:30 PM</p><a href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">2170 Buck Creek Road<br>Festus, MO 63028</a></div><div class="footer-column"><h2>Connect</h2><a href="tel:+16367253351">(636) 725-3351</a><a href="mailto:teenoutlet21@gmail.com">teenoutlet21@gmail.com</a><a href="https://www.facebook.com/profile.php?id=61590344560767" target="_blank" rel="noopener">Facebook</a></div><div class="footer-column"><h2>Explore</h2><a href="lit/">LiT</a><a href="sponsorship/">Sponsorship</a><a href="give.html">Give</a></div></div><div class="footer-bottom"><span>© <span data-current-year>2026</span> Teen Outlet Ministries</span><span>Raising a generation that knows God, lives with purpose, and makes a difference.</span></div></footer>
 <div class="toast" role="status" aria-live="polite" data-toast></div><script src="site-config.js"></script><script src="app.js"></script>
+<script>
+(function(){
+  var upcomingList=document.getElementById('upcoming-events-list');
+  var pastList=document.getElementById('past-events-list');
+  var pastSection=document.getElementById('past-events-section');
+  var emptyState=document.getElementById('upcoming-events-empty');
+  if(!upcomingList||!pastList||!pastSection)return;
+
+  var today=new Date();
+  today.setHours(0,0,0,0);
+  var events=Array.from(upcomingList.querySelectorAll('[data-event-end]'));
+
+  events.forEach(function(eventCard){
+    var parts=eventCard.getAttribute('data-event-end').split('-').map(Number);
+    if(parts.length!==3)return;
+    var endDate=new Date(parts[0],parts[1]-1,parts[2]);
+    if(endDate<today){
+      eventCard.classList.add('is-past-event');
+      var actions=eventCard.querySelector('.inline-actions');
+      if(actions)actions.remove();
+      var copy=eventCard.querySelector('.event-detail-copy');
+      if(copy&&!copy.querySelector('.past-event-badge')){
+        var badge=document.createElement('span');
+        badge.className='past-event-badge';
+        badge.textContent='Past Event';
+        copy.insertBefore(badge,copy.firstChild);
+      }
+      pastList.appendChild(eventCard);
+    }
+  });
+
+  pastSection.hidden=pastList.children.length===0;
+  if(emptyState)emptyState.classList.toggle('is-visible',upcomingList.querySelectorAll('[data-event-end]').length===0);
+})();
+</script>
 </body></html>
