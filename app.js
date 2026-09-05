@@ -18,6 +18,7 @@
   if (nav) {
     nav.querySelectorAll('a').forEach(link => {
       if (link.textContent.trim() === 'LiT') link.childNodes[0].textContent = 'LIT';
+      if (link.getAttribute('href')?.includes('merch')) link.textContent = 'TO Clothing Co';
     });
     const hasTestimoniesLink = Array.from(nav.querySelectorAll('a')).some(link => {
       const label = link.textContent.trim().toLowerCase();
@@ -55,12 +56,12 @@
     }
     const hasMerchLink = Array.from(nav.querySelectorAll('a')).some(link => {
       const label = link.textContent.trim().toLowerCase();
-      return label === 'merch' || link.getAttribute('href')?.includes('/merch');
+      return label === 'to clothing co' || link.getAttribute('href')?.includes('/merch');
     });
     if (!hasMerchLink) {
       const merchLink = document.createElement('a');
       merchLink.href = '/merch/';
-      merchLink.textContent = 'Merch';
+      merchLink.textContent = 'TO Clothing Co';
       if (window.location.pathname.startsWith('/merch')) merchLink.classList.add('active');
       const newHereLink = Array.from(nav.querySelectorAll('a')).find(link => link.textContent.trim() === 'New Here');
       if (newHereLink) nav.insertBefore(merchLink, newHereLink);
