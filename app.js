@@ -18,7 +18,7 @@
   if (nav) {
     nav.querySelectorAll('a').forEach(link => {
       if (link.textContent.trim() === 'LiT') link.childNodes[0].textContent = 'LIT';
-      if (link.getAttribute('href')?.includes('/merch') || link.textContent.trim().toLowerCase() === 'merch' || link.textContent.trim().toLowerCase() === 'to clothing co') link.remove();
+      if (link.textContent.trim().toLowerCase() === 'merch') link.remove();
     });
     const hasTestimoniesLink = Array.from(nav.querySelectorAll('a')).some(link => {
       const label = link.textContent.trim().toLowerCase();
@@ -52,6 +52,22 @@
         const navButton = nav.querySelector('.nav-button');
         if (navButton) nav.insertBefore(pastorsLink, navButton);
         else nav.appendChild(pastorsLink);
+      }
+    }
+    const hasClothingLink = Array.from(nav.querySelectorAll('a')).some(link => {
+      return link.textContent.trim().toLowerCase() === 'to clothing co' || link.getAttribute('href')?.includes('/merch');
+    });
+    if (!hasClothingLink) {
+      const clothingLink = document.createElement('a');
+      clothingLink.href = '/merch/';
+      clothingLink.textContent = 'TO Clothing Co';
+      if (window.location.pathname.startsWith('/merch')) clothingLink.classList.add('active');
+      const newHereLink = Array.from(nav.querySelectorAll('a')).find(link => link.textContent.trim() === 'New Here');
+      if (newHereLink) nav.insertBefore(clothingLink, newHereLink);
+      else {
+        const navButton = nav.querySelector('.nav-button');
+        if (navButton) nav.insertBefore(clothingLink, navButton);
+        else nav.appendChild(clothingLink);
       }
     }
   }
