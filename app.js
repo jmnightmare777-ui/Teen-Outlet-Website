@@ -18,7 +18,7 @@
   if (nav) {
     nav.querySelectorAll('a').forEach(link => {
       if (link.textContent.trim() === 'LiT') link.childNodes[0].textContent = 'LIT';
-      if (link.getAttribute('href')?.includes('merch')) link.textContent = 'TO Clothing Co';
+      if (link.getAttribute('href')?.includes('/merch') || link.textContent.trim().toLowerCase() === 'merch' || link.textContent.trim().toLowerCase() === 'to clothing co') link.remove();
     });
     const hasTestimoniesLink = Array.from(nav.querySelectorAll('a')).some(link => {
       const label = link.textContent.trim().toLowerCase();
@@ -52,23 +52,6 @@
         const navButton = nav.querySelector('.nav-button');
         if (navButton) nav.insertBefore(pastorsLink, navButton);
         else nav.appendChild(pastorsLink);
-      }
-    }
-    const hasMerchLink = Array.from(nav.querySelectorAll('a')).some(link => {
-      const label = link.textContent.trim().toLowerCase();
-      return label === 'to clothing co' || link.getAttribute('href')?.includes('/merch');
-    });
-    if (!hasMerchLink) {
-      const merchLink = document.createElement('a');
-      merchLink.href = '/merch/';
-      merchLink.textContent = 'TO Clothing Co';
-      if (window.location.pathname.startsWith('/merch')) merchLink.classList.add('active');
-      const newHereLink = Array.from(nav.querySelectorAll('a')).find(link => link.textContent.trim() === 'New Here');
-      if (newHereLink) nav.insertBefore(merchLink, newHereLink);
-      else {
-        const navButton = nav.querySelector('.nav-button');
-        if (navButton) nav.insertBefore(merchLink, navButton);
-        else nav.appendChild(merchLink);
       }
     }
   }
