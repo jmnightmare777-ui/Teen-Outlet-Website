@@ -53,6 +53,23 @@
         else nav.appendChild(pastorsLink);
       }
     }
+    const hasMerchLink = Array.from(nav.querySelectorAll('a')).some(link => {
+      const label = link.textContent.trim().toLowerCase();
+      return label === 'merch' || link.getAttribute('href')?.includes('/merch');
+    });
+    if (!hasMerchLink) {
+      const merchLink = document.createElement('a');
+      merchLink.href = '/merch/';
+      merchLink.textContent = 'Merch';
+      if (window.location.pathname.startsWith('/merch')) merchLink.classList.add('active');
+      const newHereLink = Array.from(nav.querySelectorAll('a')).find(link => link.textContent.trim() === 'New Here');
+      if (newHereLink) nav.insertBefore(merchLink, newHereLink);
+      else {
+        const navButton = nav.querySelector('.nav-button');
+        if (navButton) nav.insertBefore(merchLink, navButton);
+        else nav.appendChild(merchLink);
+      }
+    }
   }
 
   // Use the approved logo artwork uploaded to the repository.
