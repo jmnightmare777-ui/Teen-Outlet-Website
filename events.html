@@ -18,7 +18,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .events-section-heading{margin-bottom:28px}.events-section-heading h2{margin-bottom:8px}.events-section-heading p{max-width:720px;color:#bdcbd4}.past-events-section{border-top:1px solid rgba(25,200,255,.14);background:linear-gradient(180deg,rgba(25,200,255,.025),transparent 28%)}.past-events-list .event-detail{opacity:.82}.past-events-list .event-detail-media img{filter:saturate(.72) brightness(.82)}.past-event-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:12px;padding:6px 10px;border:1px solid rgba(25,200,255,.28);border-radius:999px;color:#9fb4c1;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.events-empty{display:none;padding:30px;border:1px solid rgba(25,200,255,.18);background:#040b11;color:#bdcbd4}.events-empty.is-visible{display:block}.past-events-section[hidden]{display:none!important}
+    .events-section-heading{margin-bottom:30px}.events-section-heading h2{margin-bottom:8px}.events-section-heading p{max-width:720px;color:#bdcbd4}
+    .event-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+    .event-card{position:relative;min-height:620px;overflow:hidden;border:1px solid rgba(25,200,255,.22);background:#02070c;box-shadow:0 28px 75px rgba(0,0,0,.36);isolation:isolate}
+    .event-card:before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(2,7,12,.02) 16%,rgba(2,7,12,.2) 46%,rgba(2,7,12,.93) 76%,#02070c 100%)}
+    .event-card:after{content:"";position:absolute;inset:auto 0 0;height:3px;z-index:4;background:linear-gradient(90deg,var(--blue),rgba(25,200,255,.08));transform:scaleX(.32);transform-origin:left;transition:transform .35s ease}
+    .event-card-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .35s ease}
+    .event-card-content{position:absolute;inset:auto 0 0;z-index:3;padding:34px 36px 32px}
+    .event-card-label{display:inline-flex;align-items:center;gap:9px;margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--blue);text-transform:uppercase}
+    .event-card-label:before{content:"";width:28px;height:1px;background:currentColor}
+    .event-card h2{margin:0;font-family:"Barlow Condensed",sans-serif;font-size:clamp(48px,5.6vw,72px);font-weight:900;line-height:.9;letter-spacing:-.02em;text-transform:uppercase;color:#fff}
+    .event-card .lead{margin:12px 0 18px;max-width:520px;color:#d9e4e9;font-size:16px;line-height:1.55}
+    .event-card-facts{display:flex;flex-wrap:wrap;gap:10px 18px;margin:0 0 22px;padding:0}.event-card-facts div{display:flex;gap:6px}.event-card-facts dt{color:#8fa7b5;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.event-card-facts dd{margin:0;color:#fff;font-size:12px;font-weight:700}
+    .event-card-actions{display:flex;flex-wrap:wrap;gap:10px}.event-card-actions .button{padding:12px 16px;font-size:12px}
+    .past-events-section{border-top:1px solid rgba(25,200,255,.14);background:linear-gradient(180deg,rgba(25,200,255,.025),transparent 28%)}
+    .past-events-list .event-card{opacity:.82}.past-events-list .event-card-image{filter:saturate(.68) brightness(.72)}
+    .past-event-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:12px;padding:6px 10px;border:1px solid rgba(25,200,255,.28);border-radius:999px;color:#9fb4c1;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .events-empty{display:none;padding:30px;border:1px solid rgba(25,200,255,.18);background:#040b11;color:#bdcbd4}.events-empty.is-visible{display:block}.past-events-section[hidden]{display:none!important}
+    @media(hover:hover){.event-card:hover{border-color:rgba(25,200,255,.5);box-shadow:0 32px 90px rgba(0,0,0,.48),0 0 34px rgba(25,200,255,.08)}.event-card:hover:after{transform:scaleX(1)}.event-card:hover .event-card-image{transform:scale(1.035);filter:saturate(1.04)}}
+    @media(max-width:900px){.event-list{gap:20px}.event-card{min-height:560px}.event-card-content{padding:28px}}
+    @media(max-width:720px){.event-list{grid-template-columns:1fr}.event-card{min-height:560px}.event-card h2{font-size:58px}.event-card-content{padding:26px 24px}}
+    @media(max-width:480px){.event-card{min-height:520px}.event-card h2{font-size:52px}.event-card-facts{display:grid;gap:6px}.event-card-actions .button{width:100%;justify-content:center}}
+    @media(prefers-reduced-motion:reduce){.event-card-image,.event-card:after{transition:none}}
   </style>
   <script>document.documentElement.classList.remove('no-js');</script>
 </head>
@@ -37,19 +58,22 @@
   <section class="section event-list-section" aria-labelledby="upcoming-events-heading"><div class="container">
     <div class="section-heading events-section-heading reveal"><p class="kicker">UPCOMING</p><h2 id="upcoming-events-heading">Upcoming Events</h2><p>See what’s coming up at Teen Outlet and make plans to join us.</p></div>
     <div class="event-list" id="upcoming-events-list">
-      <article class="event-detail reveal" id="heart-of-worship" data-event-end="2026-08-30"><div class="event-detail-media"><img src="assets/event-heart-of-worship.jpg" alt="The Heart of Worship worship service poster"></div><div class="event-detail-copy"><p class="kicker">SUNDAY · AUGUST 30, 2026</p><h2>The Heart of Worship</h2><p class="lead">A focused night of worship, prayer, and seeking God together.</p><dl class="event-facts"><div><dt>Time</dt><dd>5:00 PM–8:00 PM</dd></div><div><dt>Location</dt><dd>2170 Buck Creek Road<br>Festus, MO 63028</dd></div><div><dt>Type</dt><dd>Worship service</dd></div></dl><div class="inline-actions"><a class="button button-primary" href="heart-of-worship.ics" download>Add to calendar</a><a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">Get directions</a></div></div></article>
-      <article class="event-detail event-detail-reverse reveal" id="guest-speaker-night" data-event-end="2026-09-02"><div class="event-detail-media"><img src="assets/event-guest-speaker.jpg" alt="You Belong Here guest speaker event poster"></div><div class="event-detail-copy"><p class="kicker">WEDNESDAY · SEPTEMBER 2, 2026</p><h2>You Belong Here</h2><p class="lead">A powerful Wednesday night with a special guest speaker.</p><dl class="event-facts"><div><dt>Doors</dt><dd>6:30 PM</dd></div><div><dt>Service</dt><dd>7:00 PM</dd></div><div><dt>Location</dt><dd>2170 Buck Creek Road<br>Festus, MO 63028</dd></div></dl><div class="inline-actions"><a class="button button-primary" href="guest-speaker-night.ics" download>Add to calendar</a><a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">Get directions</a></div></div></article>
-      <article class="event-detail reveal" id="steve-reed" data-event-end="2026-09-30" aria-labelledby="steve-reed-heading">
-        <div class="event-detail-media"><img src="022D6A49-7E4C-47F1-B1B5-6C6F72770A39.png" alt="Teen Outlet guest speaker Steve Reed flyer - September 30 at 7:00 PM" width="1024" height="1536" loading="lazy" decoding="async"></div>
-        <div class="event-detail-copy">
-          <p class="kicker">WEDNESDAY · SEPTEMBER 30, 2026</p>
-          <h2 id="steve-reed-heading">Guest Speaker: Steve Reed</h2>
-          <p class="lead">Join Teen Outlet for a special night with guest speaker Steve Reed. Invite your friends!</p>
-          <dl class="event-facts"><div><dt>Time</dt><dd>7:00 PM</dd></div><div><dt>Location</dt><dd>2170 Buck Creek Road<br>Festus, MO 63028</dd></div></dl>
-          <div class="inline-actions"><a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">Get directions</a></div>
-        </div>
+      <article class="event-card reveal" id="heart-of-worship" data-event-end="2026-08-30">
+        <img class="event-card-image" src="assets/event-heart-of-worship.jpg" alt="The Heart of Worship worship service poster">
+        <div class="event-card-content"><p class="event-card-label">SUNDAY · AUGUST 30, 2026</p><h2>The Heart of Worship</h2><p class="lead">A focused night of worship, prayer, and seeking God together.</p><dl class="event-card-facts"><div><dt>Time</dt><dd>5:00–8:00 PM</dd></div><div><dt>Location</dt><dd>2170 Buck Creek Road</dd></div><div><dt>Type</dt><dd>Worship service</dd></div></dl><div class="event-card-actions"><a class="button button-primary" href="heart-of-worship.ics" download>Add to calendar</a><a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">Directions</a></div></div>
       </article>
-      <article class="event-detail reveal" id="costume-party" data-event-end="2026-10-17"><div class="event-detail-media"><img src="assets/event-costume-party.jpg" alt="Teen Outlet Costume Party poster"></div><div class="event-detail-copy"><p class="kicker">SATURDAY · OCTOBER 17, 2026</p><h2>Costume Party</h2><p class="lead">A night of fun, friends, games, prizes, a DJ, food, drinks, and good vibes.</p><dl class="event-facts"><div><dt>Time</dt><dd>6:00 PM–9:30 PM</dd></div><div><dt>Ages</dt><dd>13 and up</dd></div><div><dt>Admission</dt><dd>$20 online · $25 at the door</dd></div><div><dt>Location</dt><dd>320 N. Adams Street<br>Festus, MO 63028</dd></div></dl><div class="inline-actions"><a class="button button-primary" href="https://www.zeffy.com/en-US/ticketing/teen-outlet-costume-party" target="_blank" rel="noopener">Buy Costume Party Tickets <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="costume-party.ics" download>Add to calendar</a></div></div></article>
+      <article class="event-card reveal reveal-delay-1" id="guest-speaker-night" data-event-end="2026-09-02">
+        <img class="event-card-image" src="assets/event-guest-speaker.jpg" alt="You Belong Here guest speaker event poster">
+        <div class="event-card-content"><p class="event-card-label">WEDNESDAY · SEPTEMBER 2, 2026</p><h2>You Belong Here</h2><p class="lead">A powerful Wednesday night with a special guest speaker.</p><dl class="event-card-facts"><div><dt>Doors</dt><dd>6:30 PM</dd></div><div><dt>Service</dt><dd>7:00 PM</dd></div><div><dt>Location</dt><dd>2170 Buck Creek Road</dd></div></dl><div class="event-card-actions"><a class="button button-primary" href="guest-speaker-night.ics" download>Add to calendar</a><a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">Directions</a></div></div>
+      </article>
+      <article class="event-card reveal reveal-delay-2" id="steve-reed" data-event-end="2026-09-30" aria-labelledby="steve-reed-heading">
+        <img class="event-card-image" src="022D6A49-7E4C-47F1-B1B5-6C6F72770A39.png" alt="Teen Outlet guest speaker Steve Reed flyer - September 30 at 7:00 PM" width="1024" height="1536" loading="lazy" decoding="async">
+        <div class="event-card-content"><p class="event-card-label">WEDNESDAY · SEPTEMBER 30, 2026</p><h2 id="steve-reed-heading">Guest Speaker: Steve Reed</h2><p class="lead">Join Teen Outlet for a special night with guest speaker Steve Reed. Invite your friends!</p><dl class="event-card-facts"><div><dt>Time</dt><dd>7:00 PM</dd></div><div><dt>Location</dt><dd>2170 Buck Creek Road</dd></div></dl><div class="event-card-actions"><a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2170+Buck+Creek+Road+Festus+MO+63028" target="_blank" rel="noopener">Directions</a></div></div>
+      </article>
+      <article class="event-card reveal" id="costume-party" data-event-end="2026-10-17">
+        <img class="event-card-image" src="assets/event-costume-party.jpg" alt="Teen Outlet Costume Party poster">
+        <div class="event-card-content"><p class="event-card-label">SATURDAY · OCTOBER 17, 2026</p><h2>Costume Party</h2><p class="lead">A night of fun, friends, games, prizes, a DJ, food, drinks, and good vibes.</p><dl class="event-card-facts"><div><dt>Time</dt><dd>6:00–9:30 PM</dd></div><div><dt>Ages</dt><dd>13+</dd></div><div><dt>Admission</dt><dd>$20 online · $25 door</dd></div><div><dt>Location</dt><dd>320 N. Adams Street</dd></div></dl><div class="event-card-actions"><a class="button button-primary" href="https://www.zeffy.com/en-US/ticketing/teen-outlet-costume-party" target="_blank" rel="noopener">Buy Tickets <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="costume-party.ics" download>Add to calendar</a></div></div>
+      </article>
     </div>
     <p class="events-empty" id="upcoming-events-empty">No special events are scheduled right now. Check back soon, and join us every Wednesday at 6:30 PM.</p>
   </div></section>
@@ -82,9 +106,9 @@
     var endDate=new Date(parts[0],parts[1]-1,parts[2]);
     if(endDate<today){
       eventCard.classList.add('is-past-event');
-      var actions=eventCard.querySelector('.inline-actions');
+      var actions=eventCard.querySelector('.event-card-actions');
       if(actions)actions.remove();
-      var copy=eventCard.querySelector('.event-detail-copy');
+      var copy=eventCard.querySelector('.event-card-content');
       if(copy&&!copy.querySelector('.past-event-badge')){
         var badge=document.createElement('span');
         badge.className='past-event-badge';
